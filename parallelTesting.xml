@@ -1,0 +1,24 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Regression Suite" parallel = "tests" thread-count="2" >
+	
+	<test name="run Regression Test chrome">
+	<parameter name="browser" value="chrome" />
+		<classes>
+			<class name="parallelTesting.CareersTest_ParTest" />
+			<class name="parallelTesting.ChangeLanguageTest_ParTest" />
+			<class name="parallelTesting.FeedbackTest_ParTest" />
+			<class name="parallelTesting.ContactUsTest_ParTest" />
+		</classes>
+	</test>
+	
+	<test name="run Regression Test firefox">
+	<parameter name="browser" value="firefox" />
+		<classes>
+			<class name="parallelTesting.CareersTest_ParTest" />
+			<class name="parallelTesting.ChangeLanguageTest_ParTest" />
+			<class name="parallelTesting.FeedbackTest_ParTest" />
+			<class name="parallelTesting.ContactUsTest_ParTest" />
+		</classes>
+	</test>
+		
+</suite> 
