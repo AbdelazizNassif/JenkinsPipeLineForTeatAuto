@@ -1,8 +1,11 @@
 package tests;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -10,6 +13,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -57,16 +61,23 @@ public class TestBase
 	 * 		before announcing failure*/
 	@BeforeSuite
 	@Parameters({"browser"})
-	public void startDriver(@Optional("chrome") String browserName) 
-	{
+	public void startDriver(@Optional("chrome") String browserName) throws MalformedURLException {
 		if (browserName.equalsIgnoreCase("chrome")) {
-			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/drivers/chromedriver.exe");
-			driver = new ChromeDriver(chromeOption()); 
+			//System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/drivers/chromedriver.exe");
+			//driver = new ChromeDriver(chromeOption());
+			//setup the chromedriver using WebDriverManager
+			WebDriverManager.chromedriver().setup();
+
+			//Create driver object for Chrome
+			driver = new ChromeDriver();
+
 		}
 
 		else if(browserName.equalsIgnoreCase("firefox")) {
-			System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")+"/drivers/geckodriver.exe");
-			driver = new FirefoxDriver(firefoxOption()); 
+			//System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")+"/drivers/geckodriver.exe");
+			//driver = new FirefoxDriver(firefoxOption());
+			WebDriverManager.firefoxdriver().setup();
+			driver = new FirefoxDriver();
 		}
 
 		else if (browserName.equalsIgnoreCase("ie")) 

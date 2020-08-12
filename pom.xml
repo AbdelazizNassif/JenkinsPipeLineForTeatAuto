@@ -33,6 +33,11 @@
 			<version>2.13.5</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>io.github.bonigarcia</groupId>
+			<artifactId>webdrivermanager</artifactId>
+			<version>3.7.1</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -78,6 +83,19 @@
 			</activation>
 			<properties>
 				<runFile>testng.xml</runFile>
+			</properties>
+		</profile>
+		<profile>
+			<id>partest</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+				<property>
+					<name>envirnmnet</name>
+					<value>partest</value>
+				</property>
+			</activation>
+			<properties>
+				<runFile>parallelTesting.xml</runFile>
 			</properties>
 		</profile>
 	</profiles>
