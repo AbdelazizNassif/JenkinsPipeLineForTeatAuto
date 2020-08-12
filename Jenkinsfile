@@ -16,7 +16,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'mvn test -Pparltest'
+                sh 'mvn test -Pregression'
             }
             post {
                 always {
