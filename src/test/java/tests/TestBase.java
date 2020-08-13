@@ -76,7 +76,7 @@ public class TestBase
 
 			///chromeOptions.setCapability("browserVersion", "67");
 			//chromeOptions.setCapability("platformName", "Windows XP");
-			driver = new RemoteWebDriver(new URL("http://localhost:4444/"), chromeOptions);
+			driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), chromeOptions);
 
 		}
 
