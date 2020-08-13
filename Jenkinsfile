@@ -16,7 +16,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                bat 'mvn test -Pregression'
+                echo 'testing'
             }
         }
         
