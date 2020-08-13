@@ -9,6 +9,11 @@ pipeline {
         skipStagesAfterUnstable()
     }
     stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/AbdelazizNassif/JenkinsPipeLineForTestAuto.git'
+            }
+        }
         stage('Build') {
             steps {
                 sh 'mvn -B -DskipTests clean package'
