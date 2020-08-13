@@ -66,10 +66,17 @@ public class TestBase
 			//System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/drivers/chromedriver.exe");
 			//driver = new ChromeDriver(chromeOption());
 			//setup the chromedriver using WebDriverManager
-			WebDriverManager.chromedriver().setup();
+			//WebDriverManager.chromedriver().setup();
 
 			//Create driver object for Chrome
-			driver = new ChromeDriver();
+			//driver = new ChromeDriver();
+			
+			ChromeOptions chromeOptions = new ChromeOptions();
+			chromeOptions.setCapability("browserName", browserName);
+
+			///chromeOptions.setCapability("browserVersion", "67");
+			//chromeOptions.setCapability("platformName", "Windows XP");
+			driver = new RemoteWebDriver(new URL("http://localhost:4444/"), chromeOptions);
 
 		}
 
